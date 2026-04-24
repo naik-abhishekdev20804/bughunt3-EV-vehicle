@@ -18,24 +18,32 @@ export function HomePage() {
     favorites,
     handleFavHeartClick,
     openBooking,
-    pushToast,
   } = useAppState();
 
-  const [searchInput, setSearchInput] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const [maxRange, setMaxRange] = useState(500);
   const [sortMode, setSortMode] = useState("default");
   const [showAvailableOnly, setShowAvailableOnly] = useState(false);
 
+  const heroStats = useMemo(() => {
+    const availableEv = allVehicles.filter((v) => v.available).length;
+    const hubs = allStations.length;
+    const avgRating = (
+      allVehicles.reduce((s, v) => s + v.rating, 0) / allVehicles.length
+    ).toFixed(1);
+    const happyRiders = allVehicles.reduce((s, v) => s + v.reviews, 0);
+    return { availableEv, hubs, avgRating, happyRiders };
+  }, []);
+
   const filteredVehicles = useMemo(
     () =>
       filterAndSortVehicles(allVehicles, {
-        searchQuery: searchInput,
+        searchQuery: "",
         typeFilter,
         maxRange,
         sortMode,
       }),
-    [searchInput, typeFilter, maxRange, sortMode],
+    [typeFilter, maxRange, sortMode],
   );
 
   const visibleStations = useMemo(
@@ -52,12 +60,6 @@ export function HomePage() {
     );
   }, []);
 
-  const handleSearchSubmit = useCallback(() => {
-    const q = searchInput.trim();
-    if (!q) pushToast("Showing all nearby EVs", "info");
-    else pushToast(`Searching for “${q}”…`, "info");
-  }, [searchInput, pushToast]);
-
   useEffect(() => {
     if (location.hash === "#vehicles") {
       requestAnimationFrame(() =>
@@ -69,10 +71,8 @@ export function HomePage() {
   return (
     <>
       <Hero
-        searchInput={searchInput}
-        onSearchInput={setSearchInput}
-        onSearchSubmit={handleSearchSubmit}
         favoritesCount={favorites.length}
+        stats={heroStats}
       />
       <MapSection />
       <div className="section-line">

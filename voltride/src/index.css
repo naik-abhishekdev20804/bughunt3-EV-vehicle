@@ -1915,6 +1915,212 @@ button.view-all {
   color: var(--mint-dark);
 }
 
+.hero-today {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--mint-dark);
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+/* Help chat (bug 5 UX) */
+.help-chat {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.help-chat-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.help-chat-hint {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 1rem;
+}
+
+.help-chat-topics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.help-chat-topic-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card2);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.help-chat-topic-btn:hover:not(:disabled) {
+  border-color: var(--mint);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.help-chat-topic-btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.help-chat-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.88rem;
+  color: var(--text2);
+  font-weight: 600;
+}
+
+.help-chat-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-top-color: var(--mint);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.help-chat-banner {
+  margin-top: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Favorites bottom search (bug 6) */
+.favorites-search-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.favorites-search-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.favorites-search-hint {
+  font-size: 0.88rem;
+  color: var(--text2);
+  margin-bottom: 1rem;
+}
+
+.favorites-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem 1rem;
+  max-width: 560px;
+}
+
+.favorites-search-bar svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text3);
+  flex-shrink: 0;
+}
+
+.favorites-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+}
+
+.favorites-search-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.favorites-search-col-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 0.65rem;
+}
+
+.favorites-search-empty {
+  font-size: 0.88rem;
+  color: var(--text3);
+}
+
+.favorites-hit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.favorites-hit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.favorites-hit-name {
+  font-weight: 700;
+  color: var(--mint-dark);
+  text-decoration: none;
+}
+
+.favorites-hit-name:hover {
+  text-decoration: underline;
+}
+
+.favorites-hit-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text3);
+  margin-top: 0.15rem;
+}
+
+.favorites-hit-price {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text2);
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -1935,6 +2141,9 @@ button.view-all {
     grid-template-columns: 1fr 1fr;
   }
   .form-row {
+    grid-template-columns: 1fr;
+  }
+  .favorites-search-results {
     grid-template-columns: 1fr;
   }
 }

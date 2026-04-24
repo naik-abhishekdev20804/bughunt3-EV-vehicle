@@ -48,12 +48,6 @@ export function NavBar({ favCount, onFavoritesClick }) {
               </span>
             ) : null}
           </button>
-          <Link to="/help" className="btn-nav-ghost">
-            Support
-          </Link>
-          <button type="button" className="btn-login">
-            Sign In
-          </button>
         </div>
       </div>
     </nav>

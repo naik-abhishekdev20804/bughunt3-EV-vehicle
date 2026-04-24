@@ -1,9 +1,11 @@
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import { VehicleCard } from "../components/VehicleCard";
 import { allVehicles } from "../data/vehicles";
+import { allStations } from "../data/stations";
 import { USER_LAT, USER_LNG } from "../data/constants";
 import { calculateDistance } from "../utils/distance";
+import { searchVehicles, searchStations } from "../utils/favoritesSearch";
 import { useAppState } from "../context/useAppState.js";
 
 export function FavoritesPage() {
@@ -12,13 +14,24 @@ export function FavoritesPage() {
     handleFavHeartClick,
     openBooking,
     clearFavorites,
-    pushToast,
   } = useAppState();
+
+  const [bottomQuery, setBottomQuery] = useState("");
 
   const saved = useMemo(() => {
     const set = new Set(favorites);
     return allVehicles.filter((v) => set.has(v.id));
   }, [favorites]);
+
+  const vehicleHits = useMemo(
+    () => searchVehicles(allVehicles, bottomQuery),
+    [bottomQuery],
+  );
+
+  const stationHits = useMemo(
+    () => searchStations(allStations, bottomQuery),
+    [bottomQuery],
+  );
 
   const getDistance = useCallback((entity) => {
     return calculateDistance(
@@ -51,20 +64,11 @@ export function FavoritesPage() {
               <button
                 type="button"
                 className="btn-danger-outline"
-                onClick={() => {
-                  clearFavorites();
-                }}
+                onClick={() => clearFavorites()}
               >
                 Clear all
               </button>
             ) : null}
-            <button
-              type="button"
-              className="btn-login"
-              onClick={() => pushToast("Sign-in flow is a demo — coming soon!", "info")}
-            >
-              Sign in to sync
-            </button>
           </div>
         </header>
 
@@ -80,7 +84,7 @@ export function FavoritesPage() {
             </p>
             <div className="empty-favorites-actions">
               <Link to="/" className="search-btn">
-                Find EVs on home
+                Go to home
               </Link>
               <Link to="/charging" className="btn-outline">
                 View charging hubs
@@ -101,6 +105,77 @@ export function FavoritesPage() {
             ))}
           </div>
         )}
+
+        <section className="favorites-search-section" aria-labelledby="fav-search-title">
+          <h2 id="fav-search-title" className="favorites-search-title">
+            Search vehicles &amp; charging stations
+          </h2>
+          <p className="favorites-search-hint">
+            Matches across the full fleet and all hubs (not only saved rides).
+          </p>
+          <div className="favorites-search-bar">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+              <circle cx="11" cy="11" r="8" strokeWidth="2" />
+              <path d="m21 21-4.35-4.35" strokeWidth="2" />
+            </svg>
+            <input
+              type="search"
+              className="favorites-search-input"
+              placeholder="e.g. Nexon, scooter, CCS2, Koramangala…"
+              value={bottomQuery}
+              onChange={(e) => setBottomQuery(e.target.value)}
+              autoComplete="off"
+              aria-label="Search vehicles and stations"
+            />
+          </div>
+
+          {bottomQuery.trim() ? (
+            <div className="favorites-search-results">
+              <div className="favorites-search-col">
+                <h3 className="favorites-search-col-title">Vehicles</h3>
+                {vehicleHits.length === 0 ? (
+                  <p className="favorites-search-empty">No vehicle matches.</p>
+                ) : (
+                  <ul className="favorites-hit-list">
+                    {vehicleHits.map((v) => (
+                      <li key={v.id} className="favorites-hit-row">
+                        <div>
+                          <Link to="/#vehicles" className="favorites-hit-name">
+                            {v.name}
+                          </Link>
+                          <span className="favorites-hit-meta">
+                            {v.type} · {v.range} km
+                          </span>
+                        </div>
+                        <span className="favorites-hit-price">₹{v.pricePerHour}/hr</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="favorites-search-col">
+                <h3 className="favorites-search-col-title">Charging stations</h3>
+                {stationHits.length === 0 ? (
+                  <p className="favorites-search-empty">No station matches.</p>
+                ) : (
+                  <ul className="favorites-hit-list">
+                    {stationHits.map((s) => (
+                      <li key={s.id} className="favorites-hit-row">
+                        <div>
+                          <Link to="/charging" className="favorites-hit-name">
+                            {s.name}
+                          </Link>
+                          <span className="favorites-hit-meta">{s.address}</span>
+                        </div>
+                        <span className="favorites-hit-price">{s.power}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          ) : null}
+        </section>
       </div>
     </div>
   );

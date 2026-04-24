@@ -1,17 +1,27 @@
 import { Link } from "react-router-dom";
 
-export function Hero({
-  searchInput,
-  onSearchInput,
-  onSearchSubmit,
-  favoritesCount = 0,
-}) {
+function formatToday() {
+  return new Date().toLocaleDateString("en-IN", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export function Hero({ favoritesCount = 0, stats }) {
+  const {
+    availableEv,
+    hubs,
+    avgRating,
+    happyRiders,
+  } = stats;
+
   return (
     <section className="hero" id="home">
-      <div className="hero-label">
-        <span className="hero-label-dot" aria-hidden />
-        Live in Bengaluru · 48 EVs Available Now
-      </div>
+      <p className="hero-today" aria-live="polite">
+        Today · {formatToday()}
+      </p>
       <h1>
         Ride Electric.
         <br />
@@ -45,57 +55,25 @@ export function Hero({
       </div>
       <div className="hero-stats">
         <div>
-          <div className="hero-stat-num">48+</div>
-          <div className="hero-stat-label">EVs Available</div>
+          <div className="hero-stat-num">{availableEv}</div>
+          <div className="hero-stat-label">EVs available</div>
         </div>
         <div>
-          <div className="hero-stat-num">12</div>
-          <div className="hero-stat-label">Charging Hubs</div>
+          <div className="hero-stat-num">{hubs}</div>
+          <div className="hero-stat-label">Charging hubs</div>
         </div>
         <div>
-          <div className="hero-stat-num">4.8★</div>
-          <div className="hero-stat-label">Avg Rating</div>
+          <div className="hero-stat-num">{avgRating}★</div>
+          <div className="hero-stat-label">Avg rating</div>
         </div>
         <div>
-          <div className="hero-stat-num">2.4K</div>
-          <div className="hero-stat-label">Happy Riders</div>
+          <div className="hero-stat-num">
+            {happyRiders >= 1000
+              ? `${(happyRiders / 1000).toFixed(1).replace(/\.0$/, "")}K`
+              : happyRiders}
+          </div>
+          <div className="hero-stat-label">Total reviews</div>
         </div>
-      </div>
-      <div className="search-wrap">
-        <div className="search-field search-field-wide">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-            <circle cx="11" cy="11" r="8" strokeWidth="2" />
-            <path d="m21 21-4.35-4.35" strokeWidth="2" />
-          </svg>
-          <input
-            id="searchInput"
-            type="search"
-            placeholder="Search by vehicle name or type..."
-            value={searchInput}
-            onChange={(e) => onSearchInput(e.target.value)}
-            autoComplete="off"
-          />
-        </div>
-        <div className="search-divider" aria-hidden />
-        <div className="search-field">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-            <path
-              d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
-              strokeWidth="2"
-            />
-            <circle cx="12" cy="10" r="3" strokeWidth="2" />
-          </svg>
-          <input
-            type="text"
-            value="Koramangala, Bengaluru"
-            readOnly
-            className="readonly-loc"
-            aria-label="Pickup location"
-          />
-        </div>
-        <button type="button" className="search-btn" onClick={onSearchSubmit}>
-          Find EVs
-        </button>
       </div>
     </section>
   );

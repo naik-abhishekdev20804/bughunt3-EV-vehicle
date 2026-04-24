@@ -120,7 +120,7 @@ export function VehiclesPanel({
               <path d="m21 21-4.35-4.35" strokeWidth="1.5" />
             </svg>
             <h3>No vehicles found</h3>
-            <p>Try adjusting your filters or search term</p>
+            <p>Try adjusting your filters</p>
           </div>
         ) : (
           vehicles.map((v) => (

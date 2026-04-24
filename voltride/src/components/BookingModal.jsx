@@ -22,8 +22,13 @@ export function BookingModal({ vehicle, onClose, onConfirm }) {
 
   const cost = useMemo(() => {
     if (!vehicle) return null;
-    return computeBookingCost(vehicle.pricePerHour, startTime, endTime);
-  }, [vehicle, startTime, endTime]);
+    return computeBookingCost(
+      vehicle.pricePerHour,
+      startTime,
+      endTime,
+      bookDate,
+    );
+  }, [vehicle, startTime, endTime, bookDate]);
 
   if (!vehicle) return null;
 
