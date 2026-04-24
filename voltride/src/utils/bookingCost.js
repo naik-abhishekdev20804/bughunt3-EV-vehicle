@@ -12,8 +12,11 @@ export function computeBookingCost(
   const [eh, em] = endTime.split(":").map(Number);
   const startMins = sh * 60 + sm;
   const endMins = eh * 60 + em;
-  const diffMins = endMins - startMins;
-  if (diffMins <= 0) return null;
+  let diffMins = endMins - startMins;
+  // No same-day-only cap: if end is earlier on the clock, treat as next day (any length up to 24h span)
+  if (diffMins <= 0) {
+    diffMins += 24 * 60;
+  }
 
   const hours = diffMins / 60;
 

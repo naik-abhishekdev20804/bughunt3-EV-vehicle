@@ -12,6 +12,15 @@ npm run dev
 
 `npm run build` · `npm run preview`
 
+## Deploy on Vercel
+
+1. Import the Git repo in Vercel.
+2. If the app is not at the repo root, set **Root Directory** to the folder that contains `package.json` (e.g. `voltride`).
+3. Leave **Build Command** as `npm run build` (or empty so Vercel uses `vercel.json`).
+4. **Output Directory** should be `dist`.
+
+`vite` is listed in `dependencies` so the build image always installs it. If the dashboard **Build Command** was set to `vite build`, change it to **`npm run build`**.
+
 ## Routes
 
 `/`, `/favorites`, `/charging`, `/about`, `/help`

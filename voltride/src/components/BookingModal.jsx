@@ -4,13 +4,14 @@ import { computeBookingCost } from "../utils/bookingCost";
 function defaultBookingTimes() {
   const today = new Date().toISOString().split("T")[0];
   const now = new Date();
-  const hh = String(now.getHours()).padStart(2, "0");
-  const mm = String(now.getMinutes()).padStart(2, "0");
-  const endH = String((now.getHours() + 2) % 24).padStart(2, "0");
+  const start = new Date(now);
+  const end = new Date(now);
+  end.setHours(end.getHours() + 2, end.getMinutes(), 0, 0);
+  const pad = (n) => String(n).padStart(2, "0");
   return {
     bookDate: today,
-    startTime: `${hh}:${mm}`,
-    endTime: `${endH}:${mm}`,
+    startTime: `${pad(start.getHours())}:${pad(start.getMinutes())}`,
+    endTime: `${pad(end.getHours())}:${pad(end.getMinutes())}`,
   };
 }
 

@@ -1,3 +1,6 @@
+/**
+ * Charging hubs — each image is a distinct EV / DC charging scene.
+ */
 export const allStations = [
   {
     id: 1,
@@ -11,7 +14,7 @@ export const allStations = [
     location: { lat: 12.9352, lng: 77.6245 },
     price: "₹18/kWh",
     image:
-      "https://images.unsplash.com/photo-1647166545676-f6e49c50b16b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1647166545676-f6e49c50b16b?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: 2,
@@ -25,7 +28,7 @@ export const allStations = [
     location: { lat: 12.9719, lng: 77.6412 },
     price: "₹16/kWh",
     image:
-      "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: 3,
@@ -39,7 +42,7 @@ export const allStations = [
     location: { lat: 12.9165, lng: 77.6101 },
     price: "₹12/kWh",
     image:
-      "https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: 4,
@@ -53,7 +56,7 @@ export const allStations = [
     location: { lat: 12.9081, lng: 77.6476 },
     price: "₹20/kWh",
     image:
-      "https://images.unsplash.com/photo-1571127236794-81c0bbfe1ce3?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: 5,
@@ -67,7 +70,7 @@ export const allStations = [
     location: { lat: 12.9698, lng: 77.7499 },
     price: "₹22/kWh",
     image:
-      "https://images.unsplash.com/photo-1606220945770-bcfcb596a652?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1606220945770-bcfcb596a652?auto=format&fit=crop&w=1200&q=85",
   },
   {
     id: 6,
@@ -81,6 +84,6 @@ export const allStations = [
     location: { lat: 12.9255, lng: 77.5937 },
     price: "₹15/kWh",
     image:
-      "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1571127236794-81c0bbfe1ce3?auto=format&fit=crop&w=1200&q=85",
   },
 ];
