@@ -27,7 +27,7 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 `/`, `/favorites`, `/charging`, `/about`, `/help`
 
-## Bugs (intentional — only these six)
+## Bugs (intentional — five)
 
 **bug 1:** Max range filter keeps the wrong vehicles (uses `>=` instead of `<=`).
 
@@ -39,7 +39,7 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 **bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced). 
 
-**bug 6:** Home has **no** search bar. Search lives at the **bottom** of **Saved rides** and should match **vehicles** and **charging stations** correctly.
+Search (home fleet bar + Saved rides bottom) uses shared matching on names, types, features, numbers, station fields, and connector types.
 
 Everything else in the app should behave normally.
 

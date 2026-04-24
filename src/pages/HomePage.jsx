@@ -20,6 +20,7 @@ export function HomePage() {
     openBooking,
   } = useAppState();
 
+  const [searchInput, setSearchInput] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const [maxRange, setMaxRange] = useState(500);
   const [sortMode, setSortMode] = useState("default");
@@ -38,12 +39,12 @@ export function HomePage() {
   const filteredVehicles = useMemo(
     () =>
       filterAndSortVehicles(allVehicles, {
-        searchQuery: "",
+        searchQuery: searchInput,
         typeFilter,
         maxRange,
         sortMode,
       }),
-    [typeFilter, maxRange, sortMode],
+    [searchInput, typeFilter, maxRange, sortMode],
   );
 
   const visibleStations = useMemo(
@@ -85,6 +86,8 @@ export function HomePage() {
         favoritesCount={favorites.length}
         onToggleFavorite={handleFavHeartClick}
         onBook={openBooking}
+        searchQuery={searchInput}
+        onSearchQueryChange={setSearchInput}
         typeFilter={typeFilter}
         onTypeFilter={setTypeFilter}
         maxRange={maxRange}

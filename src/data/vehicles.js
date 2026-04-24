@@ -1,5 +1,12 @@
+import imgNexon from "../assets/tata nexon ev.jpeg";
+import imgMgZs from "../assets/mg zs ev.jpeg";
+import imgAther from "../assets/ather 450x.jpeg";
+import imgOla from "../assets/ola s1 air.jpeg";
+import imgChetak from "../assets/bajaj-chetak.jpeg";
+import imgKona from "../assets/kona-electric.jpeg";
+
 /**
- * Fleet data — Unsplash images matched to vehicle type (EV SUV, sedan, scooters).
+ * Fleet data — images from src/assets.
  */
 export const allVehicles = [
   {
@@ -12,8 +19,7 @@ export const allVehicles = [
     seats: 5,
     rating: 4.8,
     reviews: 234,
-    image:
-      "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1200&q=85",
+    image: imgNexon,
     accent: "linear-gradient(135deg, #0d9488, #0891b2)",
     icon: "🚙",
     badge: "popular",
@@ -32,8 +38,7 @@ export const allVehicles = [
     seats: 5,
     rating: 4.6,
     reviews: 187,
-    image:
-      "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85",
+    image: imgMgZs,
     accent: "linear-gradient(135deg, #7c3aed, #4f46e5)",
     icon: "🚗",
     badge: "premium",
@@ -52,8 +57,7 @@ export const allVehicles = [
     seats: 2,
     rating: 4.9,
     reviews: 512,
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=85",
+    image: imgAther,
     accent: "linear-gradient(135deg, #059669, #10b981)",
     icon: "🛵",
     badge: "top",
@@ -72,8 +76,7 @@ export const allVehicles = [
     seats: 2,
     rating: 4.2,
     reviews: 398,
-    image:
-      "https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&w=1200&q=85",
+    image: imgOla,
     accent: "linear-gradient(135deg, #6366f1, #8b5cf6)",
     icon: "🛵",
     badge: null,
@@ -92,8 +95,7 @@ export const allVehicles = [
     seats: 2,
     rating: 4.4,
     reviews: 276,
-    image:
-      "https://images.unsplash.com/photo-1525562723836-dca67a71d19f?auto=format&fit=crop&w=1200&q=85",
+    image: imgChetak,
     accent: "linear-gradient(135deg, #ea580c, #f59e0b)",
     icon: "🛵",
     badge: "new",
@@ -112,8 +114,7 @@ export const allVehicles = [
     seats: 5,
     rating: 4.5,
     reviews: 143,
-    image:
-      "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=85",
+    image: imgKona,
     accent: "linear-gradient(135deg, #2563eb, #06b6d4)",
     icon: "🚙",
     badge: null,

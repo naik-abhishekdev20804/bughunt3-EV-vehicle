@@ -1,3 +1,5 @@
+import { vehicleMatchesQuery } from "./searchMatch.js";
+
 function shuffleInPlace(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -10,13 +12,8 @@ export function filterAndSortVehicles(vehicles, options) {
   const { searchQuery, typeFilter, maxRange, sortMode } = options;
   let results = [...vehicles];
 
-  const q = searchQuery.trim().toLowerCase();
-  if (q) {
-    results = results.filter(
-      (v) =>
-        v.name.toLowerCase().includes(q) ||
-        v.type.toLowerCase().includes(q),
-    );
+  if (searchQuery.trim()) {
+    results = results.filter((v) => vehicleMatchesQuery(v, searchQuery));
   }
 
   if (typeFilter !== "all") {
