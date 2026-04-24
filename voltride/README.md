@@ -14,12 +14,13 @@ npm run dev
 
 ## Deploy on Vercel
 
-1. Import the Git repo in Vercel.
-2. If the app is not at the repo root, set **Root Directory** to the folder that contains `package.json` (e.g. `voltride`).
-3. Leave **Build Command** as `npm run build` (or empty so Vercel uses `vercel.json`).
-4. **Output Directory** should be `dist`.
+**If the Git repo root contains a `voltride` folder** (this project layout): commit the **`vercel.json` at the repository root** (next to `voltride/`). It runs `npm install` / `npm run build` inside `voltride` and publishes **`voltride/dist`**. Leave **Root Directory** empty (`.`).
 
-`vite` is listed in `dependencies` so the build image always installs it. If the dashboard **Build Command** was set to `vite build`, change it to **`npm run build`**.
+**If you only pushed the contents of `voltride`** (so `package.json` is at the repo root): delete the parent `vercel.json` if you copied one by mistake, and use the **`vercel.json` inside this app folder** with **Output Directory** `dist`.
+
+In both cases, do **not** set the build command to bare `vite build` — use **`npm run build`**. `vite` is in `dependencies` so CI always installs it.
+
+Client routes (`/favorites`, etc.) need the **rewrite to `/index.html`** in `vercel.json`; without it, refresh or direct links can 404.
 
 ## Routes
 
