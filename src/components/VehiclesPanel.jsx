@@ -7,8 +7,6 @@ export function VehiclesPanel({
   favorites,
   onToggleFavorite,
   onBook,
-  searchQuery = "",
-  onSearchQueryChange,
   typeFilter,
   onTypeFilter,
   maxRange,
@@ -57,26 +55,7 @@ export function VehiclesPanel({
         </div>
       </div>
 
-      <div className="filter-bar filter-bar-with-search">
-        <div className="filter-group filter-search-group">
-          <span className="filter-label">Search</span>
-          <div className="fleet-search-field">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
-              <circle cx="11" cy="11" r="8" strokeWidth="2" />
-              <path d="m21 21-4.35-4.35" strokeWidth="2" />
-            </svg>
-            <input
-              type="search"
-              className="fleet-search-input"
-              placeholder="Name, type, feature, price, range…"
-              value={searchQuery}
-              onChange={(e) => onSearchQueryChange?.(e.target.value)}
-              autoComplete="off"
-              aria-label="Search vehicles"
-            />
-          </div>
-        </div>
-        <div className="filter-sep filter-sep-search" aria-hidden />
+      <div className="filter-bar">
         <div className="filter-group">
           <span className="filter-label">Type</span>
           {[
@@ -141,7 +120,7 @@ export function VehiclesPanel({
               <path d="m21 21-4.35-4.35" strokeWidth="1.5" />
             </svg>
             <h3>No vehicles found</h3>
-            <p>Try adjusting your filters or search terms</p>
+            <p>Try adjusting your filters</p>
           </div>
         ) : (
           vehicles.map((v) => (

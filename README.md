@@ -27,7 +27,7 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 `/`, `/favorites`, `/charging`, `/about`, `/help`
 
-## Bugs (intentional — five)
+## Bugs (intentional — six)
 
 **bug 1:** Max range filter keeps the wrong vehicles (uses `>=` instead of `<=`).
 
@@ -37,9 +37,9 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 **bug 4:** “Top rated” sort should order by rating high → low, but the list is **shuffled randomly**.
 
-**bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced). 
+**bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced).
 
-Search (home fleet bar + Saved rides bottom) uses shared matching on names, types, features, numbers, station fields, and connector types.
+**bug 6:** The fleet **search bar is missing on the home page** (nearby EV grid only has type / range / sort). **Saved rides** (`/favorites`) is the only place with a search bar for vehicles and charging stations.
 
 Everything else in the app should behave normally.
 
