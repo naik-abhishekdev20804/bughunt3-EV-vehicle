@@ -37,7 +37,7 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 **bug 4:** “Top rated” sort should order by rating high → low, but the list is **shuffled randomly**.
 
-**bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced). It also shows **loading** and **“submitted / you got an answer”** at the same time.
+**bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced). 
 
 **bug 6:** Home has **no** search bar. Search lives at the **bottom** of **Saved rides** and should match **vehicles** and **charging stations** correctly.
 
