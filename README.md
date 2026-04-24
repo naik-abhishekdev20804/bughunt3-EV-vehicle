@@ -39,7 +39,7 @@ If you still see 404, open the deployment **Build Logs** and confirm `dist/index
 
 **bug 5:** Help chat lists many questions, but the **reply is the answer to a different question** in the list (misplaced).
 
-**bug 6:** The fleet **search bar is missing on the home page** (nearby EV grid only has type / range / sort). **Saved rides** (`/favorites`) is the only place with a search bar for vehicles and charging stations.
+**bug 6: **search bar is missing on the home page and its in saved rides section** 
 
 Everything else in the app should behave normally.
 
