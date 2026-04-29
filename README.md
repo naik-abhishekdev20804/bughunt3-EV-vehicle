@@ -4,7 +4,7 @@
 
 **bug 1:** Max range filter keeps the wrong vehicles (uses `>=` instead of `<=`).
 
-**bug 2:** Booking subtotal should be `price/hr × hours` but it uses `price/hr × 1.5` instead (ignores duration).
+**bug 2:** Booking subtotal the vehicle , subtal calculation is wrong.
 
 **bug 3:** Today’s date is shown on the home page, but the booking form still accepts a start date **before** today and shows a normal total (it should block or warn).
 
